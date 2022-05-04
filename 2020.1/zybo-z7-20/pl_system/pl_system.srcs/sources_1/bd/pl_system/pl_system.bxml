@@ -1,0 +1,179 @@
+<Root MajorVersion="0" MinorVersion="39">
+  <CompositeFile CanBeSetAsTop="false" CanDisplayChildGraph="true" CompositeFileTopName="pl_system">
+    <Description>Composite Fileset</Description>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1652520095" />
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1652520095" />
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1652520095" />
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1652520095" />
+    <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="ip/pl_system_LDW6NYN/pl_system_LDW6NYN.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_W8UXTWT/pl_system_W8UXTWT.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0_local_memory/dlmb_v10" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_3FFLID3/pl_system_3FFLID3.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0_local_memory/ilmb_v10" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_RMFDXWO/pl_system_RMFDXWO.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0_local_memory/dlmb_bram_if_cntlr" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_HH1EDFM/pl_system_HH1EDFM.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0_local_memory/ilmb_bram_if_cntlr" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_QAVCV01/pl_system_QAVCV01.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0_local_memory/lmb_bram" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_R9G4TYL/pl_system_R9G4TYL.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/microblaze_0_axi_intc" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_mdm_1_0/pl_system_mdm_1_0.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/mdm_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_HX0IOHN/pl_system_HX0IOHN.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/rst_clk_125M" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_1DB8W0Q/pl_system_1DB8W0Q.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/axi_gpio_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_processing_system7_0_0/pl_system_processing_system7_0_0.xci" Type="IP">
+        <Instance HierarchyPath="ps_system/ps" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_9ZRIKV8/pl_system_9ZRIKV8.xci" Type="IP">
+        <Instance HierarchyPath="ps_system/proc_sys_rst" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_BKICL5E/pl_system_BKICL5E.xci" Type="IP">
+        <Instance HierarchyPath="ps_system/axi_gpio_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_TFTFYLD/pl_system_TFTFYLD.xci" Type="IP">
+        <Instance HierarchyPath="rtl_system" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_2W39DBW/pl_system_2W39DBW.xci" Type="IP">
+        <Instance HierarchyPath="hls_system/axi_gpio_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_4RBLIR7/pl_system_4RBLIR7.xci" Type="IP">
+        <Instance HierarchyPath="hls_system/blink_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_smartconnect_0_2/pl_system_smartconnect_0_2.xci" Type="IP">
+        <Instance HierarchyPath="ps_system/smartconnect_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_smartconnect_0_1/pl_system_smartconnect_0_1.xci" Type="IP">
+        <Instance HierarchyPath="mb_system/smartconnect_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_smartconnect_0_0/pl_system_smartconnect_0_0.xci" Type="IP">
+        <Instance HierarchyPath="hls_system/smartconnect_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_HHF9P60/pl_system_HHF9P60.xci" Type="IP">
+        <Instance HierarchyPath="hls_system/axi_interconnect_0" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="false" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+      <File Name="ip/pl_system_MO7WSQB/pl_system_MO7WSQB.xci" Type="IP">
+        <Instance HierarchyPath="hls_system/axi_interconnect_0/s00_couplers/auto_pc" />
+        <Properties IsEditable="false" IsStatusTracked="true" IsTrackable="true" IsVisible="true" Timestamp="0" />
+        <Library Name="xil_defaultlib" />
+        <UsedIn Val="SYNTHESIS" />
+        <UsedIn Val="IMPLEMENTATION" />
+        <UsedIn Val="SIMULATION" />
+      </File>
+    </FileCollection>
+  </CompositeFile>
+</Root>

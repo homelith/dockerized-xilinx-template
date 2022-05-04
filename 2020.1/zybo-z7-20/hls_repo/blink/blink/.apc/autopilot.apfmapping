@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="blink.cpp" path="/opt/work/eda-docker_intl/xilinx_2020-1/hls_repo/blink/src/blink.cpp"/>
+    <originFiles name="blink.h" path="/opt/work/eda-docker_intl/xilinx_2020-1/hls_repo/blink/src/blink.h"/>
+    <originFiles name="common.h" path="/opt/work/eda-docker_intl/xilinx_2020-1/hls_repo/blink/src/common.h"/>
+  </source>
+  <testbench>
+    <originFiles name="blink_tb.cpp" path="/opt/work/eda-docker_intl/xilinx_2020-1/hls_repo/blink/src/blink_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
