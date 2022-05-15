@@ -1,6 +1,10 @@
 #### Installing Software ####
 FROM ubuntu:18.04 AS Base
-ENV INTERNAL_USER=xuser
+
+ARG INTERNAL_USER=xuser
+ARG PASSWORD=password
+
+ENV INTERNAL_USER=${INTERNAL_USER}
 ENV FILE_DIR=docker
 
 # install pkgs
@@ -30,6 +34,25 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# desktop environment
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      xfce4 \
+      xrdp \
+      ibus \
+      ibus-mozc \
+      language-pack-ja-base \
+      language-pack-ja \
+      fonts-ipafont-gothic \
+      fonts-ipafont-mincho && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+EXPOSE 3389
+
+RUN echo "startxfce4" > /etc/skel/.xsession
+
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+    && echo 'Asia/Tokyo' > /etc/timezone
 
 # reserved for patching Y2K22
 #COPY y2k22_patch-1.2.zip /opt/
@@ -40,9 +63,9 @@ RUN apt-get update && \
 #### Global Settings ####
 # set locale
 RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8 \
+    LANGUAGE en_US:en \
+    LC_ALL en_US.UTF-8
 
 # copy install scripts
 RUN chmod go+rx /root
@@ -50,11 +73,16 @@ COPY ${FILE_DIR}/install.sh /root/install.sh
 COPY ${FILE_DIR}/install_config.txt /root/install_config.txt
 RUN chmod +x /root/install.sh
 COPY ${FILE_DIR}/settings.sh /root/settings.sh
+COPY ${FILE_DIR}/startxrdp.sh /usr/bin/startxrdp.sh
 
 #### User Settings ####
 # add vivado user
-RUN useradd -ms /bin/bash ${INTERNAL_USER}
-RUN echo "${INTERNAL_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+RUN useradd -ms /bin/bash ${INTERNAL_USER} && \
+    echo ${INTERNAL_USER}:${PASSWORD} | chpasswd && \
+    echo "${INTERNAL_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN cp /etc/skel/.xsession /home/${INTERNAL_USER}/.xsession && chown -R ${INTERNAL_USER} /home/${INTERNAL_USER}/.xsession
+
 USER ${INTERNAL_USER}
 WORKDIR /home/${INTERNAL_USER}
 
@@ -64,5 +92,5 @@ RUN echo "source /root/settings.sh" >> /home/${INTERNAL_USER}/.bashrc
 #### Finalize ####
 USER root
 COPY ${FILE_DIR}/entrypoint.sh /root/entrypoint.sh
-ENTRYPOINT [ "sh", "/root/entrypoint.sh" ]
-CMD ["/bin/sh"]
+ENTRYPOINT [ "bash", "/root/entrypoint.sh" ]
+CMD ["/usr/bin/startxrdp.sh"]
