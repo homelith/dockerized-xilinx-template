@@ -8,4 +8,6 @@ if [ -n ${USER_ID+x} -a -n ${GROUP_ID+x} ]; then
     groupmod -g $GROUP_ID ${INTERNAL_USER}
 fi
 
-bash -c "$@"
+CMDLINE="$@"
+su ${INTERNAL_USER} -c "$CMDLINE"
+exit $?
