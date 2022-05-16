@@ -1,0 +1,31 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-468,-61",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port hls_gpio -pg 1 -lvl 2 -x 270 -y 70 -defaultsOSRD
+preplace port mb_gpio -pg 1 -lvl 2 -x 270 -y 170 -defaultsOSRD
+preplace port clk_200 -pg 1 -lvl 0 -x -20 -y 170 -defaultsOSRD
+preplace port arst_n -pg 1 -lvl 0 -x -20 -y 80 -defaultsOSRD
+preplace port rtl_gpio -pg 1 -lvl 2 -x 270 -y 290 -defaultsOSRD
+preplace port clk_400 -pg 1 -lvl 0 -x -20 -y 20 -defaultsOSRD
+preplace port clk_100 -pg 1 -lvl 0 -x -20 -y 60 -defaultsOSRD
+preplace inst blink_0 -pg 1 -lvl 1 -x 140 -y 310 -defaultsOSRD
+preplace inst hls_system -pg 1 -lvl 1 -x 140 -y 60 -defaultsOSRD
+preplace inst mb_system -pg 1 -lvl 1 -x 140 -y 172 -defaultsOSRD
+preplace netloc clk_200 1 0 1 10 162n
+preplace netloc srst_n 1 0 1 0 70n
+preplace netloc rtl_gpio 1 1 1 250J 290n
+preplace netloc clk_100_1 1 0 1 0J 50n
+preplace netloc mb_gpio 1 1 1 250J 162n
+preplace netloc hls_gpio 1 1 1 250J 60n
+levelinfo -pg 1 -20 140 270
+pagesize -pg 1 -db -bbox -sgen -130 -10 380 1290
+"
+}
+{
+   "da_axi4_cnt":"3",
+   "da_mb_cnt":"1"
+}
