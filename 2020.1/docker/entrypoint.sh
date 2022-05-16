@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 INTERNAL_USER=xuser
 if [ -n ${USER_ID+x} -a -n ${GROUP_ID+x} ]; then
@@ -7,6 +7,7 @@ if [ -n ${USER_ID+x} -a -n ${GROUP_ID+x} ]; then
     usermod -u $USER_ID -o -d /home/${INTERNAL_USER} -m ${INTERNAL_USER}
     groupmod -g $GROUP_ID ${INTERNAL_USER}
 fi
+
 CMDLINE="$@"
 su ${INTERNAL_USER} -c "$CMDLINE"
 exit $?
