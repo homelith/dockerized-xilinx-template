@@ -1,5 +1,5 @@
 #### Installing Software ####
-FROM ubuntu:18.04 AS Base
+FROM ubuntu:20.04 AS Base
 
 ARG INTERNAL_USER=xuser
 ARG PASSWORD=password
@@ -20,17 +20,23 @@ RUN apt-get update && \
 # required pkg for running installer
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      autoconf build-essential expect gawk gcc-multilib libtool libncurses5-dev libncursesw5-dev \
-      libxrender-dev libxtst-dev locales net-tools python3 texinfo zlib1g-dev zlib1g:i386 && \
+      autoconf build-essential expect gawk gcc-multilib libncurses5-dev libncursesw5-dev libtinfo5 libtool net-tools texinfo zlib1g-dev zlib1g:i386 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# required pkg for running installer
+#RUN apt-get update && \
+#    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+#      libxrender-dev libxtst-dev locales python3 && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/*
+
 # required pkg for running vivado/vitis and its workaround
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      cpio faketime libgmp-dev libgtk2.0-0 xvfb && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+#      cpio faketime libgmp-dev libgtk2.0-0 xvfb && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/*
 
 # desktop environment
 RUN apt-get update && \
@@ -39,12 +45,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 EXPOSE 3389
-
-# reserved for patching Y2K22
-#COPY y2k22_patch-1.2.zip /opt/
-#RUN unzip -d /opt/Xilinx /opt/y2k22_patch-1.2.zip && \
-#    cd /opt/Xilinx && \
-#    LD_LIBRARY_PATH=/opt/Xilinx/Vivado/2020.1/tps/lnx64/python-2.7.16/lib/ /opt/Xilinx/Vivado/2020.1/tps/lnx64/python-2.7.16/bin/python2.7 /opt/Xilinx/y2k22_patch/patch.py
 
 #### Global Settings ####
 # set locale
