@@ -1,0 +1,32 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.935636",
+   "Default View_TopLeft":"-144,3",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port DDR3 -pg 1 -lvl 4 -x 1040 -y 390 -defaultsOSRD
+preplace port s_axi -pg 1 -lvl 0 -x -10 -y 220 -defaultsOSRD
+preplace port arst_n -pg 1 -lvl 0 -x -10 -y 260 -defaultsOSRD
+preplace port axi_aclk -pg 1 -lvl 0 -x -10 -y 280 -defaultsOSRD
+preplace port mig_sys_clk -pg 1 -lvl 0 -x -10 -y 450 -defaultsOSRD
+preplace port mig_ref_clk -pg 1 -lvl 0 -x -10 -y 430 -defaultsOSRD
+preplace inst mig_7series_0 -pg 1 -lvl 3 -x 870 -y 430 -defaultsOSRD
+preplace inst rst_mig_7series_0_200M -pg 1 -lvl 1 -x 210 -y 110 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 2 -x 580 -y 280 -defaultsOSRD
+preplace netloc mig_7series_0_ui_clk_sync_rst 1 0 4 10 530 NJ 530 NJ 530 1010
+preplace netloc mig_7series_0_ui_clk 1 0 4 20 290 390 540 NJ 540 1000
+preplace netloc mig_7series_0_mmcm_locked 1 0 4 30 400 NJ 400 740J 330 1020
+preplace netloc rst_mig_7series_0_100M_peripheral_aresetn 1 1 2 400 470 NJ
+preplace netloc srst_n 1 0 3 NJ 260 420 410 NJ
+preplace netloc sys_clk 1 0 2 NJ 280 410
+preplace netloc clk_400_1 1 0 3 NJ 450 NJ 450 NJ
+preplace netloc clk_ref_i_0_1 1 0 3 NJ 430 NJ 430 NJ
+preplace netloc mig_7series_0_DDR3 1 3 1 N 390
+preplace netloc axi_interconnect_0_M00_AXI 1 2 1 730 280n
+preplace netloc s_axi 1 0 2 NJ 220 NJ
+levelinfo -pg 1 -10 210 580 870 1040
+pagesize -pg 1 -db -bbox -sgen -150 0 1130 550
+"
+}
+

@@ -28,14 +28,14 @@ RUN apt-get update && \
 # required pkg for running vivado/vitis and its workaround
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      cpio faketime libgmp-dev libgtk2.0-0 xvfb && \
+      cpio faketime libgmp-dev libgtk2.0-0 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # desktop environment
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      fonts-ipafont-gothic fonts-ipafont-mincho ibus ibus-mozc language-pack-ja language-pack-ja-base xfce4 xrdp && \
+      fonts-ipafont-gothic fonts-ipafont-mincho ibus ibus-mozc language-pack-ja language-pack-ja-base xfce4 xrdp xvfb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 EXPOSE 3389
