@@ -11,7 +11,7 @@
 #   0403:6010 = FT2232C/D/H Dual UART/FIFO IC
 ################################################################################
 
-.PHONY: default docker docker-xrdp docker-build docker-clean
+.PHONY: default docker docker-xrdp docker-build docker-force-rebuild docker-pull docker-push docker-clean
 
 # dump variables
 #@$(foreach v,$(.VARIABLES),$(info $v=$($v)))
@@ -20,13 +20,15 @@ SCRIPT_DIR     := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 PROJ_ROOT      := .
 INSTALL_ROOT   := /opt
 
+# use homelith.sakuracr.jp registry only when you trust @homelith stores non-malicious image here and agreeing the site is served under no warranty and no guarantee.
 IMAGE_NAME     := xilinx-tools
+#IMAGE_NAME     := homelith.sakuracr.jp/xilinx-tools
+
 IMAGE_TAG      := 2020.1
 INTERNAL_USER  := xuser
 BUILD_REQUIRED := \
 	$(shell if ! (type docker > /dev/null 2>&1); then echo 0; \
 	elif ! (docker inspect $(IMAGE_NAME):$(IMAGE_TAG) > /dev/null 2>&1); then echo 1; \
-	elif [ $$(date -r Dockerfile +%s) -gt $$(date -d $$(docker inspect -f '{{.Created}}' $(IMAGE_NAME):$(IMAGE_TAG) ) +%s) ]; then echo 1 ; \
 	else echo 0 ; \
 	fi )
 
@@ -35,7 +37,7 @@ default: docker
 # get vivado & xsdk & petalinux PATH introduced shell on a container, suitable for Linux Desktop and WSL2 where GUI tools run on host X server directly.
 docker:
 	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
-	@if [ $(BUILD_REQUIRED) -eq 1 ]; then time docker build -t $(IMAGE_NAME):$(IMAGE_TAG) . ; fi
+	@if [ $(BUILD_REQUIRED) -eq 1 ]; then echo "container image $(IMAGE_NAME):$(IMAGE_TAG) not found, try \`make docker-build\` or \`make docker-pull\` to get it." ; exit 1 ; fi
 	docker run --rm --net host -it -w $(SCRIPT_DIR) \
 		-v $(SCRIPT_DIR)/$(PROJ_ROOT)/:$(SCRIPT_DIR)/$(PROJ_ROOT)/ \
 		-v ${INSTALL_ROOT}:/opt -e USER_ID=`id -u` -e GROUP_ID=`id -g` \
@@ -55,7 +57,7 @@ docker:
 # leave running console on current terminal, access localhost:13389 and then use credential username=xuser and password=password
 docker-xrdp:
 	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
-	@if [ $(BUILD_REQUIRED) -eq 1 ]; then time docker build -t $(IMAGE_NAME):$(IMAGE_TAG) . ; fi
+	@if [ $(BUILD_REQUIRED) -eq 1 ]; then echo "container image $(IMAGE_NAME):$(IMAGE_TAG) not found, try \`make docker-build\` or \`make docker-pull\` to get it." ; exit 1 ; fi
 	docker run --rm -it -w $(SCRIPT_DIR) \
 		-p 13389:3389 \
 		-v $(SCRIPT_DIR)/$(PROJ_ROOT)/:$(SCRIPT_DIR)/$(PROJ_ROOT)/ \
@@ -71,10 +73,22 @@ docker-xrdp:
 		$(shell if [ -e /dev/ttyUSB5 ] ; then echo "--device /dev/ttyUSB5"; fi) \
 		$(IMAGE_NAME):$(IMAGE_TAG) && true
 
-# build or force-rebuld docker image
+# manipulate docker image
 docker-build:
 	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
+	time docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
+
+docker-force-rebuild:
+	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
 	time docker build -t $(IMAGE_NAME):$(IMAGE_TAG) --no-cache .
+
+docker-pull:
+	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
+	time docker pull $(IMAGE_NAME):$(IMAGE_TAG)
+
+docker-push:
+	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
+	time docker push $(IMAGE_NAME):$(IMAGE_TAG)
 
 # remove docker image
 docker-clean:
