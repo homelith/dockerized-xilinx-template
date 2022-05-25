@@ -1,0 +1,27 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-14,-25",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 4 -x 1050 -y 210 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 4 -x 1050 -y 230 -defaultsOSRD
+preplace port gpio -pg 1 -lvl 4 -x 1050 -y 120 -defaultsOSRD
+preplace inst proc_sys_rst -pg 1 -lvl 2 -x 620 -y 100 -defaultsOSRD
+preplace inst ps -pg 1 -lvl 1 -x 220 -y 260 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 920 -y 120 -defaultsOSRD
+preplace inst axi_intx -pg 1 -lvl 2 -x 620 -y 350 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 370 430 200 810
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 420 80n
+preplace netloc rst_clk_50M_peripheral_aresetn 1 2 1 N 140
+preplace netloc processing_system7_0_FIXED_IO 1 1 3 NJ 230 NJ 230 NJ
+preplace netloc processing_system7_0_DDR 1 1 3 NJ 210 NJ 210 NJ
+preplace netloc axi_intx2gpio 1 2 1 800 100n
+preplace netloc axi_ps2intx 1 1 1 440 270n
+preplace netloc Conn1 1 3 1 NJ 120
+levelinfo -pg 1 0 220 620 920 1050
+pagesize -pg 1 -db -bbox -sgen 0 0 1170 470
+"
+}
+
