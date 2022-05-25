@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR75502 (lin64) Build 2960000 Wed Aug  5 22:57:21 MDT 2020
-//Date        : Sat May 14 08:19:35 2022
+//Date        : Wed May 25 15:16:36 2022
 //Host        : hmmt32 running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target pl_system_wrapper.bd
 //Design      : pl_system_wrapper
@@ -31,11 +31,11 @@ module pl_system_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
-    hls_gpio_tri_o,
+    arst_n,
+    hls_gpio,
     mb_gpio_tri_o,
     ps_gpio_tri_o,
     rtl_gpio,
-    srst_n,
     sys_clk);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
@@ -58,11 +58,11 @@ module pl_system_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  output [0:0]hls_gpio_tri_o;
+  input arst_n;
+  output [0:0]hls_gpio;
   output [0:0]mb_gpio_tri_o;
   output [0:0]ps_gpio_tri_o;
   output rtl_gpio;
-  input srst_n;
   input sys_clk;
 
   wire [14:0]DDR_addr;
@@ -86,11 +86,11 @@ module pl_system_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
-  wire [0:0]hls_gpio_tri_o;
+  wire arst_n;
+  wire [0:0]hls_gpio;
   wire [0:0]mb_gpio_tri_o;
   wire [0:0]ps_gpio_tri_o;
   wire rtl_gpio;
-  wire srst_n;
   wire sys_clk;
 
   pl_system pl_system_i
@@ -115,10 +115,10 @@ module pl_system_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
-        .hls_gpio_tri_o(hls_gpio_tri_o),
+        .arst_n(arst_n),
+        .hls_gpio(hls_gpio),
         .mb_gpio_tri_o(mb_gpio_tri_o),
         .ps_gpio_tri_o(ps_gpio_tri_o),
         .rtl_gpio(rtl_gpio),
-        .srst_n(srst_n),
         .sys_clk(sys_clk));
 endmodule

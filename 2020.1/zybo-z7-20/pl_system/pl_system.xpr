@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="/opt/work/dockerized-xilinx-template/2020.1/zybo-z7-20/pl_system/pl_system.xpr">
+<Project Version="7" Minor="49" Path="/opt/work/dockerized/dockerized-xilinx-template/2020.1/zybo-z7-20/pl_system/pl_system.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="68cba784d1c94876b12228bece80fd14"/>
@@ -81,59 +81,53 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_RMFDXWO/pl_system_RMFDXWO.xci">
-          <Proxy FileSetName="pl_system_RMFDXWO"/>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_3FFLID3/pl_system_3FFLID3.xci">
+          <Proxy FileSetName="pl_system_3FFLID3"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_HH1EDFM/pl_system_HH1EDFM.xci">
           <Proxy FileSetName="pl_system_HH1EDFM"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_smartconnect_0_2/pl_system_smartconnect_0_2.xci">
-          <Proxy FileSetName="pl_system_smartconnect_0_2"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_smartconnect_0_1/pl_system_smartconnect_0_1.xci">
-          <Proxy FileSetName="pl_system_smartconnect_0_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_auto_pc_0/pl_system_auto_pc_0.xci">
-          <Proxy FileSetName="pl_system_auto_pc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_2W39DBW/pl_system_2W39DBW.xci">
-          <Proxy FileSetName="pl_system_2W39DBW"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_BKICL5E/pl_system_BKICL5E.xci">
-          <Proxy FileSetName="pl_system_BKICL5E"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_TFTFYLD/pl_system_TFTFYLD.xci">
-          <Proxy FileSetName="pl_system_TFTFYLD"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_processing_system7_0_0/pl_system_processing_system7_0_0.xci">
-          <Proxy FileSetName="pl_system_processing_system7_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_4RBLIR7/pl_system_4RBLIR7.xci">
-          <Proxy FileSetName="pl_system_4RBLIR7"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_9ZRIKV8/pl_system_9ZRIKV8.xci">
-          <Proxy FileSetName="pl_system_9ZRIKV8"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_1DB8W0Q/pl_system_1DB8W0Q.xci">
-          <Proxy FileSetName="pl_system_1DB8W0Q"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_mdm_1_0/pl_system_mdm_1_0.xci">
-          <Proxy FileSetName="pl_system_mdm_1_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_R9G4TYL/pl_system_R9G4TYL.xci">
-          <Proxy FileSetName="pl_system_R9G4TYL"/>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_RMFDXWO/pl_system_RMFDXWO.xci">
+          <Proxy FileSetName="pl_system_RMFDXWO"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_QAVCV01/pl_system_QAVCV01.xci">
           <Proxy FileSetName="pl_system_QAVCV01"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_3FFLID3/pl_system_3FFLID3.xci">
-          <Proxy FileSetName="pl_system_3FFLID3"/>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_7DNRC4P/pl_system_7DNRC4P.xci">
+          <Proxy FileSetName="pl_system_7DNRC4P"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_HX0IOHN/pl_system_HX0IOHN.xci">
-          <Proxy FileSetName="pl_system_HX0IOHN"/>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_TFTFYLD/pl_system_TFTFYLD.xci">
+          <Proxy FileSetName="pl_system_TFTFYLD"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_9ZRIKV8/pl_system_9ZRIKV8.xci">
+          <Proxy FileSetName="pl_system_9ZRIKV8"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_4RBLIR7/pl_system_4RBLIR7.xci">
+          <Proxy FileSetName="pl_system_4RBLIR7"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_BKICL5E/pl_system_BKICL5E.xci">
+          <Proxy FileSetName="pl_system_BKICL5E"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_WM14XZW/pl_system_WM14XZW.xci">
+          <Proxy FileSetName="pl_system_WM14XZW"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_R9G4TYL/pl_system_R9G4TYL.xci">
+          <Proxy FileSetName="pl_system_R9G4TYL"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_mdm_1_0/pl_system_mdm_1_0.xci">
+          <Proxy FileSetName="pl_system_mdm_1_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_LDW6NYN/pl_system_LDW6NYN.xci">
           <Proxy FileSetName="pl_system_LDW6NYN"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_1DB8W0Q/pl_system_1DB8W0Q.xci">
+          <Proxy FileSetName="pl_system_1DB8W0Q"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_processing_system7_0_0/pl_system_processing_system7_0_0.xci">
+          <Proxy FileSetName="pl_system_processing_system7_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_HX0IOHN/pl_system_HX0IOHN.xci">
+          <Proxy FileSetName="pl_system_HX0IOHN"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="pl_system.bd" FileRelPathName="ip/pl_system_W8UXTWT/pl_system_W8UXTWT.xci">
           <Proxy FileSetName="pl_system_W8UXTWT"/>
@@ -184,12 +178,6 @@
       <Filter Type="Utils"/>
       <Config>
         <Option Name="TopAutoSet" Val="TRUE"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="pl_system_TFTFYLD" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_TFTFYLD">
-      <Config>
-        <Option Name="TopModule" Val="pl_system_TFTFYLD"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
     <FileSet Name="pl_system_LDW6NYN" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_LDW6NYN">
@@ -270,9 +258,9 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="pl_system_2W39DBW" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_2W39DBW">
+    <FileSet Name="pl_system_TFTFYLD" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_TFTFYLD">
       <Config>
-        <Option Name="TopModule" Val="pl_system_2W39DBW"/>
+        <Option Name="TopModule" Val="pl_system_TFTFYLD"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -282,15 +270,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="pl_system_smartconnect_0_2" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_smartconnect_0_2">
+    <FileSet Name="pl_system_7DNRC4P" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_7DNRC4P">
       <Config>
-        <Option Name="TopModule" Val="pl_system_smartconnect_0_2"/>
+        <Option Name="TopModule" Val="pl_system_7DNRC4P"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="pl_system_smartconnect_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_smartconnect_0_1">
+    <FileSet Name="pl_system_WM14XZW" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pl_system_WM14XZW">
       <Config>
-        <Option Name="TopModule" Val="pl_system_smartconnect_0_1"/>
+        <Option Name="TopModule" Val="pl_system_WM14XZW"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -335,214 +323,169 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_TFTFYLD_synth_1" Type="Ft3:Synth" SrcSet="pl_system_TFTFYLD" Part="xc7z020clg400-1" ConstrsSet="pl_system_TFTFYLD" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_TFTFYLD_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_LDW6NYN_synth_1" Type="Ft3:Synth" SrcSet="pl_system_LDW6NYN" Part="xc7z020clg400-1" ConstrsSet="pl_system_LDW6NYN" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_LDW6NYN_synth_1" Type="Ft3:Synth" SrcSet="pl_system_LDW6NYN" Part="xc7z020clg400-1" ConstrsSet="pl_system_LDW6NYN" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_LDW6NYN_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_W8UXTWT_synth_1" Type="Ft3:Synth" SrcSet="pl_system_W8UXTWT" Part="xc7z020clg400-1" ConstrsSet="pl_system_W8UXTWT" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_W8UXTWT_synth_1" Type="Ft3:Synth" SrcSet="pl_system_W8UXTWT" Part="xc7z020clg400-1" ConstrsSet="pl_system_W8UXTWT" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_W8UXTWT_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_3FFLID3_synth_1" Type="Ft3:Synth" SrcSet="pl_system_3FFLID3" Part="xc7z020clg400-1" ConstrsSet="pl_system_3FFLID3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_3FFLID3_synth_1" Type="Ft3:Synth" SrcSet="pl_system_3FFLID3" Part="xc7z020clg400-1" ConstrsSet="pl_system_3FFLID3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_3FFLID3_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_RMFDXWO_synth_1" Type="Ft3:Synth" SrcSet="pl_system_RMFDXWO" Part="xc7z020clg400-1" ConstrsSet="pl_system_RMFDXWO" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_RMFDXWO_synth_1" Type="Ft3:Synth" SrcSet="pl_system_RMFDXWO" Part="xc7z020clg400-1" ConstrsSet="pl_system_RMFDXWO" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_RMFDXWO_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_HH1EDFM_synth_1" Type="Ft3:Synth" SrcSet="pl_system_HH1EDFM" Part="xc7z020clg400-1" ConstrsSet="pl_system_HH1EDFM" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_HH1EDFM_synth_1" Type="Ft3:Synth" SrcSet="pl_system_HH1EDFM" Part="xc7z020clg400-1" ConstrsSet="pl_system_HH1EDFM" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_HH1EDFM_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_QAVCV01_synth_1" Type="Ft3:Synth" SrcSet="pl_system_QAVCV01" Part="xc7z020clg400-1" ConstrsSet="pl_system_QAVCV01" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_QAVCV01_synth_1" Type="Ft3:Synth" SrcSet="pl_system_QAVCV01" Part="xc7z020clg400-1" ConstrsSet="pl_system_QAVCV01" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_QAVCV01_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_R9G4TYL_synth_1" Type="Ft3:Synth" SrcSet="pl_system_R9G4TYL" Part="xc7z020clg400-1" ConstrsSet="pl_system_R9G4TYL" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_R9G4TYL_synth_1" Type="Ft3:Synth" SrcSet="pl_system_R9G4TYL" Part="xc7z020clg400-1" ConstrsSet="pl_system_R9G4TYL" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_R9G4TYL_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_mdm_1_0_synth_1" Type="Ft3:Synth" SrcSet="pl_system_mdm_1_0" Part="xc7z020clg400-1" ConstrsSet="pl_system_mdm_1_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_mdm_1_0_synth_1" Type="Ft3:Synth" SrcSet="pl_system_mdm_1_0" Part="xc7z020clg400-1" ConstrsSet="pl_system_mdm_1_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_mdm_1_0_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_HX0IOHN_synth_1" Type="Ft3:Synth" SrcSet="pl_system_HX0IOHN" Part="xc7z020clg400-1" ConstrsSet="pl_system_HX0IOHN" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_HX0IOHN_synth_1" Type="Ft3:Synth" SrcSet="pl_system_HX0IOHN" Part="xc7z020clg400-1" ConstrsSet="pl_system_HX0IOHN" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_HX0IOHN_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_1DB8W0Q_synth_1" Type="Ft3:Synth" SrcSet="pl_system_1DB8W0Q" Part="xc7z020clg400-1" ConstrsSet="pl_system_1DB8W0Q" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_1DB8W0Q_synth_1" Type="Ft3:Synth" SrcSet="pl_system_1DB8W0Q" Part="xc7z020clg400-1" ConstrsSet="pl_system_1DB8W0Q" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_1DB8W0Q_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_processing_system7_0_0_synth_1" Type="Ft3:Synth" SrcSet="pl_system_processing_system7_0_0" Part="xc7z020clg400-1" ConstrsSet="pl_system_processing_system7_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_processing_system7_0_0_synth_1" Type="Ft3:Synth" SrcSet="pl_system_processing_system7_0_0" Part="xc7z020clg400-1" ConstrsSet="pl_system_processing_system7_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_processing_system7_0_0_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_9ZRIKV8_synth_1" Type="Ft3:Synth" SrcSet="pl_system_9ZRIKV8" Part="xc7z020clg400-1" ConstrsSet="pl_system_9ZRIKV8" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_9ZRIKV8_synth_1" Type="Ft3:Synth" SrcSet="pl_system_9ZRIKV8" Part="xc7z020clg400-1" ConstrsSet="pl_system_9ZRIKV8" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_9ZRIKV8_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_BKICL5E_synth_1" Type="Ft3:Synth" SrcSet="pl_system_BKICL5E" Part="xc7z020clg400-1" ConstrsSet="pl_system_BKICL5E" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_BKICL5E_synth_1" Type="Ft3:Synth" SrcSet="pl_system_BKICL5E" Part="xc7z020clg400-1" ConstrsSet="pl_system_BKICL5E" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_BKICL5E_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_TFTFYLD_synth_1" Type="Ft3:Synth" SrcSet="pl_system_TFTFYLD" Part="xc7z020clg400-1" ConstrsSet="pl_system_TFTFYLD" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_2W39DBW_synth_1" Type="Ft3:Synth" SrcSet="pl_system_2W39DBW" Part="xc7z020clg400-1" ConstrsSet="pl_system_2W39DBW" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_2W39DBW_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_4RBLIR7_synth_1" Type="Ft3:Synth" SrcSet="pl_system_4RBLIR7" Part="xc7z020clg400-1" ConstrsSet="pl_system_4RBLIR7" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_4RBLIR7_synth_1" Type="Ft3:Synth" SrcSet="pl_system_4RBLIR7" Part="xc7z020clg400-1" ConstrsSet="pl_system_4RBLIR7" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_4RBLIR7_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_7DNRC4P_synth_1" Type="Ft3:Synth" SrcSet="pl_system_7DNRC4P" Part="xc7z020clg400-1" ConstrsSet="pl_system_7DNRC4P" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_smartconnect_0_2_synth_1" Type="Ft3:Synth" SrcSet="pl_system_smartconnect_0_2" Part="xc7z020clg400-1" ConstrsSet="pl_system_smartconnect_0_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_smartconnect_0_2_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_WM14XZW_synth_1" Type="Ft3:Synth" SrcSet="pl_system_WM14XZW" Part="xc7z020clg400-1" ConstrsSet="pl_system_WM14XZW" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_smartconnect_0_1_synth_1" Type="Ft3:Synth" SrcSet="pl_system_smartconnect_0_1" Part="xc7z020clg400-1" ConstrsSet="pl_system_smartconnect_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_smartconnect_0_1_synth_1" IncludeInArchive="true">
+    <Run Id="pl_system_auto_pc_0_synth_1" Type="Ft3:Synth" SrcSet="pl_system_auto_pc_0" Part="xc7z020clg400-1" ConstrsSet="pl_system_auto_pc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="pl_system_auto_pc_0_synth_1" Type="Ft3:Synth" SrcSet="pl_system_auto_pc_0" Part="xc7z020clg400-1" ConstrsSet="pl_system_auto_pc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pl_system_auto_pc_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="pl_system_TFTFYLD_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_TFTFYLD" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_TFTFYLD_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -780,7 +723,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_2W39DBW_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_2W39DBW" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_2W39DBW_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="pl_system_TFTFYLD_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_TFTFYLD" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_TFTFYLD_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -814,7 +757,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_smartconnect_0_2_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_smartconnect_0_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_smartconnect_0_2_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="pl_system_7DNRC4P_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_7DNRC4P" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_7DNRC4P_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -831,7 +774,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pl_system_smartconnect_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_smartconnect_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_smartconnect_0_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="pl_system_WM14XZW_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pl_system_WM14XZW" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pl_system_WM14XZW_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>

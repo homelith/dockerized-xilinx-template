@@ -3,13 +3,14 @@
 #
 # quick usage:
 #   $ make build           # full compilation via local installed Xilinx tools
-#   $ make ide             # open vitis GUI with $(PROJ_NAME_MB)
+#   $ make ide             # open vitis GUI
 #   $ make clean           # clean up generated files
 ################################################################################
 
 .PHONY: default build ide clean
 
 PROJ_ROOT=..
+PROJ_NAME=mb_system
 SCRIPT_DIR=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 XSCT_PATH=$(shell readlink -f $(shell which xsct))
 XBIN_ROOT=$(shell dirname $(XSCT_PATH))
@@ -29,5 +30,6 @@ ide:
 
 # cleanup generated files
 clean:
+	if [ -d ./workspace/$(PROJ_NAME)/src ]; then cp -rf workspace/$(PROJ_NAME)/src/* ./src/ ; fi
 	rm -rf workspace .Xil
 	rm -f *.log *.jou *.log *.str

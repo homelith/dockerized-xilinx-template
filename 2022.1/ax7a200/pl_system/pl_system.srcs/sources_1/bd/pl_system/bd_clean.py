@@ -57,48 +57,46 @@ import shutil
 import xml.etree.ElementTree as ElementTree
 
 # bd json & bxml XML object to be manipulated
-global mode
-global design_name
-global bd_dict
-global bxml_tree
+global bd_dict_all
+global bxml_tree_all
 
 # find XML record which points xci filepath
 def find_xci_path_from_bxml(xci_path):
-	for tag in bxml_tree.findall(".//*[@Type='IP']"):
+	for tag in bxml_tree_all.findall(".//*[@Type='IP']"):
 		if xci_path == tag.attrib["Name"]:
 			return tag
 
 # search specific "xci_name" and return True if found
-def find_xci_name_from_bd_dict(sub_dict, xci_name):
+def find_xci_name_from_bd_dict(bd_dict_sub, xci_name):
 	ret = False
-	if isinstance(sub_dict, collections.OrderedDict):
-		for key in sub_dict.keys():
-			if key == "xci_name" and sub_dict[key] == xci_name:
+	if isinstance(bd_dict_sub, collections.OrderedDict):
+		for key in bd_dict_sub.keys():
+			if key == "xci_name" and bd_dict_sub[key] == xci_name:
 				ret = True
 			else:
-				ret = find_xci_name_from_bd_dict(sub_dict[key], xci_name)
+				ret = find_xci_name_from_bd_dict(bd_dict_sub[key], xci_name)
 	return ret
 
 # search specific "xci_path" and return True if found
-def find_xci_path_from_bd_dict(sub_dict, xci_path):
+def find_xci_path_from_bd_dict(bd_dict_sub, xci_path):
 	ret = False
-	if isinstance(sub_dict, collections.OrderedDict):
-		for key in sub_dict.keys():
-			if key == "xci_path" and sub_dict[key] == xci_path:
+	if isinstance(bd_dict_sub, collections.OrderedDict):
+		for key in bd_dict_sub.keys():
+			if key == "xci_path" and bd_dict_sub[key] == xci_path:
 				ret = True
 			else:
-				ret = find_xci_path_from_bd_dict(sub_dict[key], xci_path)
+				ret = find_xci_path_from_bd_dict(bd_dict_sub[key], xci_path)
 	return ret
 
 # replace "xci_name" with "{design_name}_{7 character randomized string}" on bd,
 # replace "<File name="" ... >" attribute with 7 char string on bxml
 # rename xci file and directory name under 'ip/' with 7 char string
 # 7 chars are selected from UPPERCASE ascii & digits according to another Vivado based name generation
-def sanitize_xci(bd_xci_record):
+def sanitize_xci(process_mode, design_name, bd_xci_record):
 
 	# get xci filepath and confirm the path valid
 	bxml_xci_record = None
-	if mode == "legacy":
+	if process_mode == "legacy":
 		bxml_xci_record = find_xci_path_from_bxml("ip/" + bd_xci_record["xci_name"] + "/" + bd_xci_record["xci_name"] + ".xci")
 		if bxml_xci_record == None:
 			print("warn : bxml filepath record not found for '%s.xci', skipping..." % bd_xci_record[""], end="\n", file=sys.stderr)
@@ -107,12 +105,13 @@ def sanitize_xci(bd_xci_record):
 	org_xci_name = bd_xci_record["xci_name"]
 
 	org_xci_path = ""
-	if mode == "legacy":
+	if process_mode == "legacy":
 		org_xci_path = bxml_xci_record.attrib["Name"]
 	else:
 		org_xci_path = bd_xci_record["xci_path"]
+
 	if not os.path.isfile(org_xci_path):
-		print("warn : bxml filepath record '%s' is not valid, skipping..." % bxml_xci_record.attrib["Name"], end="\n", file=sys.stderr)
+		print("warn : xci filepath record '%s' is not valid, skipping..." % org_xci_path, end="\n", file=sys.stderr)
 		return
 
 	org_xci_dir = os.path.dirname(org_xci_path)
@@ -126,9 +125,15 @@ def sanitize_xci(bd_xci_record):
 
 	# check if there are xci and xml file only and no submodules
 	# currently submodule renaming is not supported
-	if sum(os.path.exists(os.path.join(org_xci_dir, name)) for name in os.listdir(org_xci_dir)) != 2:
-		print("log : '%s' includes submodules and not supported, skipping..." % org_xci_dir, end="\n", file=sys.stderr)
-		return
+	# FIXME : its no good that distinguish submodule existing by counting how many files stored in the ip directory
+	if process_mode == "legacy":
+		if sum(os.path.exists(os.path.join(org_xci_dir, name)) for name in os.listdir(org_xci_dir)) != 2:
+			print("log : '%s' includes submodules and not supported, skipping..." % org_xci_dir, end="\n", file=sys.stderr)
+			return
+	else:
+		if sum(os.path.exists(os.path.join(org_xci_dir, name)) for name in os.listdir(org_xci_dir)) != 1:
+			print("log : '%s' includes submodules and not supported, skipping..." % org_xci_dir, end="\n", file=sys.stderr)
+			return
 
 	# make new 7 chars pathname and check if already exists
 	new_xci_name = ""
@@ -137,48 +142,51 @@ def sanitize_xci(bd_xci_record):
 	new_xcixml_path = ""
 	while True:
 		new_xci_name = design_name + "_" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
-		if find_xci_name_from_bd_dict(bd_dict, new_xci_name):
+		if find_xci_name_from_bd_dict(bd_dict_all, new_xci_name):
 			continue
+
 		new_xci_dir = "ip/" + new_xci_name
 		if os.path.isdir(new_xci_dir):
 			continue
+
 		new_xci_path = "ip/" + new_xci_name + "/" + new_xci_name + ".xci"
-		if mode == "legacy":
+		if process_mode == "legacy":
 			if find_xci_path_from_bxml(new_xci_path) != None:
 				continue
 		else:
-			if find_xci_path_from_bd_dict(bd_dict, new_xci_path):
+			if find_xci_path_from_bd_dict(bd_dict_all, new_xci_path):
 				continue
 		if os.path.isfile(new_xci_path):
 			continue
+
 		new_xcixml_path = "ip/" + new_xci_name + "/" + new_xci_name + ".xml"
-		if mode == "legacy" and os.path.isfile(new_xcixml_path):
+		if process_mode == "legacy" and os.path.isfile(new_xcixml_path):
 			continue
 		break
 
 	# move xci file
 	os.makedirs(new_xci_dir, mode=511)
 	shutil.move(org_xci_path, new_xci_path)
-	if mode == "legacy":
+	if process_mode == "legacy":
 		shutil.move(org_xcixml_path, new_xcixml_path)
 	shutil.rmtree(org_xci_dir)
 
 	# rename records
 	bd_xci_record["xci_name"] = new_xci_name
-	if mode == "legacy":
+	if process_mode == "legacy":
 		bxml_xci_record.attrib["Name"] = new_xci_path
 	else:
-		bd_xci_record["xci_name"] = new_xci_path
+		bd_xci_record["xci_path"] = new_xci_path
 	print("log : ip '%s' has renamed to '%s'" % (org_xci_name, new_xci_name), end="\n", file=sys.stderr)
 
 # scan "xci_name" object and call sanitizer
-def recurr_scan_xci(sub_dict):
-	if isinstance(sub_dict, collections.OrderedDict):
-		for key in sub_dict.keys():
+def recurr_scan_xci(process_mode, design_name, bd_dict_sub):
+	if isinstance(bd_dict_sub, collections.OrderedDict):
+		for key in bd_dict_sub.keys():
 			if key == "xci_name":
-				sanitize_xci(sub_dict)
+				sanitize_xci(process_mode, design_name, bd_dict_sub)
 			else:
-				recurr_scan_xci(sub_dict[key])
+				recurr_scan_xci(process_mode, design_name, bd_dict_sub[key])
 
 if __name__ == "__main__":
 	# parse arguments and validate filepaths
@@ -189,12 +197,9 @@ if __name__ == "__main__":
 	parser.add_argument("bxml_path", type=str, nargs="?", default="", help="bxml filepath (only used in legacy mode) (default : {./{design basename}.bxml})")
 	args = parser.parse_args()
 
-	design_name = args.design_name
-
 	if args.mode != "default" and args.mode != "legacy":
 		print("error : mode '%s' is unrecognized" % args.mode, end="\n", file=sys.stderr)
 		sys.exit(1)
-	mode = args.mode
 
 	if args.bd_path == "":
 		args.bd_path = "./" + args.design_name + ".bd"
@@ -204,30 +209,30 @@ if __name__ == "__main__":
 
 	if args.bxml_path == "":
 		args.bxml_path = "./" + args.design_name + ".bxml"
-	if mode == "legacy" and not os.path.isfile(args.bxml_path):
+	if args.mode == "legacy" and not os.path.isfile(args.bxml_path):
 		print("error : bxml filepath '%s' specified but not found" % args.bxml_path, end="\n", file=sys.stderr)
 		sys.exit(1)
 
-	print("info : run program with mode = '%s', design_name = '%s', bd_path = '%s', bxml_path = '%s'" % (args.mode, args.design_name, args.bd_path, args.bxml_path), end="\n", file=sys.stderr)
+	print("info : run program with process_mode = '%s', design_name = '%s', bd_path = '%s', bxml_path = '%s'" % (args.mode, args.design_name, args.bd_path, args.bxml_path), end="\n", file=sys.stderr)
 
 	# open bd file and unmarshal as json
 	bd_fp = open(args.bd_path, "r")
-	bd_dict = json.load(bd_fp, object_pairs_hook = collections.OrderedDict)
+	bd_dict_all = json.load(bd_fp, object_pairs_hook = collections.OrderedDict)
 	bd_fp.close()
 
 	# open bxml file and unmarshal as XML (legacy)
-	if mode == "legacy":
-		bxml_tree = ElementTree.parse(args.bxml_path)
+	if args.mode == "legacy":
+		bxml_tree_all = ElementTree.parse(args.bxml_path)
 
 	# scan bd and replace xci name
-	recurr_scan_xci(bd_dict)
+	recurr_scan_xci(args.mode, args.design_name, bd_dict_all)
 
-	# write to bd & bxml file
+	# write to bd file
 	bd_fp = open(args.bd_path, "w")
-	json.dump(bd_dict, bd_fp, sort_keys=False, indent=2)
+	json.dump(bd_dict_all, bd_fp, sort_keys=False, indent=2)
 	bd_fp.close()
 
 	# write to bxml file (legacy mode)
-	if mode == "legacy":
-		bxml_tree.write(args.bxml_path)
+	if args.mode == "legacy":
+		bxml_tree_all.write(args.bxml_path)
 

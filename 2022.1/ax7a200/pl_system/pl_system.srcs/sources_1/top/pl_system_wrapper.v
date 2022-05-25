@@ -13,21 +13,7 @@ module pl_system_wrapper(
   input           SYS_CLK_P,
   input           SYS_CLK_N,
   // DDR3 SDRAM
-  output  [14:0]  DDR3_addr,
-  output  [2:0]   DDR3_ba,
-  output          DDR3_cas_n,
-  //output          DDR3_ck_n,
-  //output          DDR3_ck_p,
-  output          DDR3_cke,
-  output          DDR3_cs_n,
-  output  [3:0]   DDR3_dm,
-  inout   [31:0]  DDR3_dq,
-  //inout   [3:0]   DDR3_dqs_n,
-  //inout   [3:0]   DDR3_dqs_p,
-  output          DDR3_odt,
-  output          DDR3_ras_n,
   output          DDR3_reset_n,
-  output          DDR3_we_n,
   // push switches (active LOW)
   input           RESET,
   input           KEY1,
@@ -61,18 +47,8 @@ module pl_system_wrapper(
   assign LED3 = ~hls_gpio_out;
   assign LED4 = ~mb_gpio_out;
 
-  assign DDR3_addr = 15'd0;
-  assign DDR3_ba = 3'd0;
-  assign DDR3_cas_n = 1'b0;
-  assign DDR3_cke = 1'b0;
-  assign DDR3_cs_n = 1'b0;
-  assign DDR3_dm = 4'd0;
-  assign DDR3_dq = 32'hz;
-  assign DDR3_odt = 1'b0;
-  assign DDR3_ras_n = 1'b0;
   assign DDR3_reset_n = 1'b0;
-  assign DDR3_we_n = 1'b0;
-
+  
   // terminate differential clock input and generate ddr system clock
   sys_pll sys_pll_inst
   (
@@ -88,13 +64,13 @@ module pl_system_wrapper(
     .clk_in1_n(SYS_CLK_N)
   );
 
-  pl_system pl_system_i(
+  pl_system pl_system_inst(
     .clk_400(clk_400),
     .clk_200(clk_200),
     .clk_100(clk_100),
     .arst_n(sys_pll_locked),
     .rtl_gpio(rtl_gpio_out),
-    .hls_gpio_tri_o(hls_gpio_out),
+    .hls_gpio(hls_gpio_out),
     .mb_gpio_tri_o(mb_gpio_out)
   );
 

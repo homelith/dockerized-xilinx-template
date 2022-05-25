@@ -29,40 +29,12 @@ module pl_system_wrapper(
   assign LED[1] = hls_gpio_out;
   assign LED[2] = mb_gpio_out;
   assign LED[3] = ps_gpio_out;
-  
-  // generate synchronized reset
-  reg [16:0] arst_n_sample_cnt_r;
-  reg [1:0] arst_n_sample_r;
-  reg srst_n_r;
-  always @ (posedge sys_clk or negedge arst_n) begin
-    if (! arst_n) begin
-      arst_n_sample_cnt_r <= 17'd0;
-    end else begin
-      arst_n_sample_cnt_r <= arst_n_sample_cnt_r + 17'd1;
-    end
-  end
-  always @ (posedge sys_clk or negedge arst_n) begin
-    if (! arst_n) begin
-      arst_n_sample_r <= 2'd0;
-    end else if (|{arst_n_sample_cnt_r} == 1'b0) begin
-      arst_n_sample_r <= {arst_n_sample_r, arst_n};
-    end else begin
-      arst_n_sample_r <= arst_n_sample_r;
-    end
-  end
-  always @ (posedge sys_clk) begin
-    if (arst_n_sample_r[1] == arst_n_sample_r[0]) begin
-      srst_n_r <= arst_n_sample_r[1];
-    end else begin
-      srst_n_r <= srst_n_r;
-    end
-  end
 
-  pl_system pl_system_i(
+  pl_system pl_system_inst(
     .sys_clk(sys_clk),
-    .srst_n(srst_n_r),
+    .arst_n(arst_n),
     .rtl_gpio(rtl_gpio_out),
-    .hls_gpio_tri_o(hls_gpio_out),
+    .hls_gpio(hls_gpio_out),
     .mb_gpio_tri_o(mb_gpio_out),
     .ps_gpio_tri_o(ps_gpio_out)
   );

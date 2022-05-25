@@ -1,6 +1,6 @@
 PETALINUX_VER=2020.1
 VALIDATE_HW_CHKSUM=1
-HARDWARE_PATH=../pl_system/pl_system_wrapper.xsa
-HARDWARE_CHECKSUM=978564a3cfd6a2aae3313f506ca90878
+HARDWARE_PATH=/opt/work/dockerized/dockerized-xilinx-template/2020.1/zybo-z7-20/pl_system/pl_system_wrapper.xsa
+HARDWARE_CHECKSUM=3db7326eb4577c6275134579272a7597
 YOCTO_SDK=ec2933eff44b6c49df87d39a9666aafb
 RFSCONFIG_CHKSUM=5199e5019b5abbd6c4581cd171a7ca2d
