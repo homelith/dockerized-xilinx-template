@@ -25,7 +25,7 @@ IMAGE_NAME     := xilinx-tools
 #IMAGE_NAME     := homelith.sakuracr.jp/xilinx-tools
 
 IMAGE_TAG      := 2022.1
-INTERNAL_USER  := xuser
+INTERNAL_USER  := user
 BUILD_REQUIRED := \
 	$(shell if ! (type docker > /dev/null 2>&1); then echo 0; \
 	elif ! (docker inspect $(IMAGE_NAME):$(IMAGE_TAG) > /dev/null 2>&1); then echo 1; \
@@ -54,7 +54,7 @@ docker:
 		$(IMAGE_NAME):$(IMAGE_TAG) bash && true
 
 # exec a container with xfce4 desktop inside allows you to access it via RDP client, suitable for headless server and Docker on Mac.
-# leave running console on current terminal, access localhost:13389 and then use credential username=xuser and password=password
+# leave running console on current terminal, access localhost:13389 and then use credential username=user and password=password
 docker-xrdp:
 	@if !(type docker > /dev/null 2>&1); then echo "command 'docker' not found." ; exit 1 ; fi
 	@if [ $(BUILD_REQUIRED) -eq 1 ]; then echo "container image $(IMAGE_NAME):$(IMAGE_TAG) not found, try \`make docker-build\` or \`make docker-pull\` to get it." ; exit 1 ; fi

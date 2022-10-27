@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WORK_DIR=installer_temp
-INTERNAL_USER=xuser
+INTERNAL_USER=user
 XILINX_TOOL_VERSION=2022.1
 XILINX_ROOT_DIR=/opt/Xilinx
 INSTALLER_DIR=/opt/install_files
@@ -62,9 +62,11 @@ exit 0
 "
 
 # install recommended bdf
+# note : board_files directory is not created by default on Xilinx 2022.1
 wget https://github.com/Avnet/bdf/archive/master.zip -O avnet.zip
 wget https://github.com/Digilent/vivado-boards/archive/master.zip -O digilent.zip
-unzip "*.zip" 
+unzip -o "*.zip"
+sudo mkdir -p ${XILINX_ROOT_DIR}/Vivado/${XILINX_TOOL_VERSION}/data/boards/board_files
 sudo cp -r bdf-master/* ${XILINX_ROOT_DIR}/Vivado/${XILINX_TOOL_VERSION}/data/boards/board_files/
 sudo cp -r bdf-master/* ${XILINX_ROOT_DIR}/Vitis/${XILINX_TOOL_VERSION}/data/boards/board_files/
 sudo cp -r vivado-boards-master/new/* ${XILINX_ROOT_DIR}/Vivado/${XILINX_TOOL_VERSION}/data/boards/board_files/
@@ -72,3 +74,5 @@ sudo cp -r vivado-boards-master/new/* ${XILINX_ROOT_DIR}/Vitis/${XILINX_TOOL_VER
 
 # introduce PATH
 source /root/settings.sh
+
+
