@@ -1,7 +1,7 @@
 #### Installing Software ####
 FROM ubuntu:18.04 AS Base
 
-ARG INTERNAL_USER=xuser
+ARG INTERNAL_USER=user
 ARG PASSWORD=password
 
 ENV INTERNAL_USER=${INTERNAL_USER}
