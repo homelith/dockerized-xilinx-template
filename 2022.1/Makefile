@@ -2,13 +2,16 @@
 # Makefile for providing xilinx tools introduced environment via docker
 #
 # usage:
-#   $ make docker  # get console on xilinx-tools container
-#   $ make clean   # cleanup generated files
+#   $ make docker      # get console on xilinx-tools container with X forwarding to client X server
+#                      # `xeyes` to test X forwarding
+#   $ make docker-xrdp # get console on xilinx-tools container with Xfce virtual desktop accessible on localhost:13389
+#   $ make clean       # cleanup generated files
 #
 # supported VendorID / ProductID
 #   10c4:ea70 = CP2105 Dual UART Bridge
 #   0403:6014 = FT232H Single HS USB-UART
 #   0403:6010 = FT2232C/D/H Dual UART/FIFO IC
+#   0403:6011 = FT4232H Quad High Speed USB to UART/MPSSE IC
 ################################################################################
 
 .PHONY: default docker docker-xrdp docker-build docker-force-rebuild docker-pull docker-push docker-clean
@@ -44,6 +47,7 @@ docker:
 		$(shell if [ -n "`lsusb -d 10c4:ea70`" ] ; then echo "--device `lsusb -d 10c4:ea70`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -n "`lsusb -d 0403:6014`" ] ; then echo "--device `lsusb -d 0403:6014`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -n "`lsusb -d 0403:6010`" ] ; then echo "--device `lsusb -d 0403:6010`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
+		$(shell if [ -n "`lsusb -d 0403:6011`" ] ; then echo "--device `lsusb -d 0403:6011`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -e /dev/ttyUSB0 ] ; then echo "--device /dev/ttyUSB0"; fi) \
 		$(shell if [ -e /dev/ttyUSB1 ] ; then echo "--device /dev/ttyUSB1"; fi) \
 		$(shell if [ -e /dev/ttyUSB2 ] ; then echo "--device /dev/ttyUSB2"; fi) \
@@ -65,6 +69,8 @@ docker-xrdp:
 		$(shell if [ -n "`lsusb -d 10c4:ea70`" ] ; then echo "--device `lsusb -d 10c4:ea70`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -n "`lsusb -d 0403:6014`" ] ; then echo "--device `lsusb -d 0403:6014`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -n "`lsusb -d 0403:6010`" ] ; then echo "--device `lsusb -d 0403:6010`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
+		$(shell if [ -n "`lsusb -d 0403:6011`" ] ; then echo "--device `lsusb -d 0403:6011`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
+		$(shell if [ -e /dev/ttyUSB0 ] ; then echo "--device /dev/ttyUSB0"; fi) \
 		$(shell if [ -e /dev/ttyUSB0 ] ; then echo "--device /dev/ttyUSB0"; fi) \
 		$(shell if [ -e /dev/ttyUSB1 ] ; then echo "--device /dev/ttyUSB1"; fi) \
 		$(shell if [ -e /dev/ttyUSB2 ] ; then echo "--device /dev/ttyUSB2"; fi) \
