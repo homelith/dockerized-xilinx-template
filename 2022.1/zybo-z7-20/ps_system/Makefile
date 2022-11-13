@@ -11,7 +11,7 @@
 .PHONY: default all config oldconfig build clean
 
 PROJ_ROOT=..
-PATH_DOWNLOAD_BIT=../mb_system/workspace/download.bit
+PATH_DOWNLOAD_BIT=../mb_system/workspace/pl_system_wrapper_with_elf.bit
 
 # this Makefile read only first arguments as target and the rest as arguments for target
 # arguments are treated as do-nothing targets from here
@@ -30,12 +30,12 @@ all:
 config:
 	@if [ -z $(firstword $(RUN_ARGS)) ] ; then echo "error : no positional argument specified (e.g. '$$ make {cmd} {positional arg}')"; exit 1 ; fi
 	@if !(type petalinux-config > /dev/null 2>&1); then echo "command 'petalinux-config' not found." ; exit 1 ; fi
-	petalinux-config --get-hw-description=$(PROJ_ROOT)/$(firstword $(RUN_ARGS))
+	petalinux-config --get-hw-description=$(PROJ_ROOT)/$(firstword $(RUN_ARGS))/project
 
 oldconfig:
 	@if [ -z $(firstword $(RUN_ARGS)) ] ; then echo "error : no positional argument specified (e.g. '$$ make {cmd} {positional arg}')"; exit 1 ; fi
 	@if !(type petalinux-config > /dev/null 2>&1); then echo "command 'petalinux-config' not found." ; exit 1 ; fi
-	petalinux-config --silentconfig --get-hw-description=$(PROJ_ROOT)/$(firstword $(RUN_ARGS))
+	petalinux-config --silentconfig --get-hw-description=$(PROJ_ROOT)/$(firstword $(RUN_ARGS))/project
 
 build:
 	@if [ -z $(firstword $(RUN_ARGS)) ] ; then echo "error : no positional argument specified (e.g. '$$ make {cmd} {positional arg}')"; exit 1 ; fi

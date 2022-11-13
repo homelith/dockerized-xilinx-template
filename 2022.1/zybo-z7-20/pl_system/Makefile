@@ -59,4 +59,4 @@ clean:
 	rm -f vivado*.log vivado*.jou vivado*.str 
 	rm -rf project
 	rm -rf .Xil NA
-	rm -f *.sysdef *.xsa *.log
+	rm -f *.sysdef *.log
