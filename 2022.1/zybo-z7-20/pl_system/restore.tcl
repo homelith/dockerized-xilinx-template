@@ -11,7 +11,7 @@ set src_file_path    [lindex $argv 5]
 set bd_tcl           [lindex $argv 6]
 set bd_name          [lindex $argv 7]
 
-create_project project/$project_name .
+create_project project/${project_name} .
 
 # add board_files repositories and specify board_part
 set_param board.repoPaths [concat [file normalize ${board_repo_path}] [get_param board.repoPaths]]

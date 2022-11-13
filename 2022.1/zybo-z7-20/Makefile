@@ -3,6 +3,7 @@
 #
 # quick usage:
 #   $ make build   # full compilation via PATH introduced Xilinx tools
+#   $ make output  # collect output bitstreams into output/ directory
 #   $ make clean   # cleanup generated files
 ################################################################################
 .PHONY: build output clean

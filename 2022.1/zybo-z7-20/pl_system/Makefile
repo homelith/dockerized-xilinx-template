@@ -42,7 +42,7 @@ ide: $(VIVADO_PROJ_PATH)
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
 	vivado $(VIVADO_PROJ_PATH) &
 
-# record all .v, .sv, .xdc in srcs folder into src_file.tcl
+# record all .v, .sv, .xci, .xdc in srcs folder into src_file.tcl
 export: $(VIVADO_PROJ_PATH)
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
 	@if [ -f src_file.tcl.bak ]; then echo "backup file 'src_file.tcl.bak' already exists. stopped."; exit 1; fi
@@ -50,6 +50,7 @@ export: $(VIVADO_PROJ_PATH)
 	echo "set src_path [lindex \$${argv} 0]" > src_file.tcl
 	find $(SRC_FILE_PATH) -name "*.v" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.sv" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
+	find $(SRC_FILE_PATH) -name "*.xci" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.xdc" -exec bash -c "echo \"add_files {} -fileset [get_filesets constrs_1]\" >> src_file.tcl" \;
 	sed -i -e 's/$(subst /,\/,$(SRC_FILE_PATH))/\$${src_path}/g' src_file.tcl
 
