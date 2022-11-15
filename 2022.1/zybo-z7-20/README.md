@@ -8,9 +8,10 @@
 
 - Make sure boot selector jumper pin (JP5) is placed on `SD` and power on the board. you may see 3 of 4 leds blinks autonomously which means RTL / HLS / Microblaze modules are running.
 
-- access PS console via serial port or ssh on ethernet ports (DHCP-enabled) and login with username: `root`, password: `root`.
+- access PS console via serial port or ssh on ethernet ports (DHCP-enabled) and login with username: `petalinux`.
+   + you will be requested to change your password on your first login.
 
-- Issue `while true; do devmem 0x40000000 8 0xff; sleep 1; devmem 0x40000000 8 0x00; sleep 1; done` to blink 4th led from PS.
+- Issue `sudo bash -c "while true; do devmem 0x40000000 8 0xff; sleep 1; devmem 0x40000000 8 0x00; sleep 1; done"` to blink 4th led from PS.
 
 ## make your own design
 
