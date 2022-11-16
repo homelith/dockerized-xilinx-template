@@ -1,33 +1,29 @@
-## pl\_system vivado project
+## ps\_system petalinux Yocto building project
 
 ### files
 
 - README.md : this file
 - Makefile : stores useful shortcut commands
-- restore.tcl : script for restoring vivado project
-  + src\_file.tcl : (generated via `make export`) script for adding source files into project
-  + pl\_system.tcl : (vivado generated) script for reconstructing pl\_system board design called by restore.tcl
-- implement.tcl : "generate bd -> synthesis -> implement -> export xsa" automation script
-- srcs : stores RTL modules and constraint xdcs
+- config.project
+- .petalinux
+- components
+- project-spec
+
+### sstate-cache settings
+
+- PetaLinux template project is configured with sstate-cache enabled according to howto article below
+  + https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips#PetaLinuxYoctoTips-HowtoreducebuildtimeusingSSTATECACHE
+
+- pre-applied config
+
+```
+$ petalinux-config ---> Yocto Settings ---> Add pre-mirror url ---> file:///opt/Xilinx/PetaLinux/2022.1/downloads
+$ petalinux-config ---> Yocto Settings ---> Local sstate feeds settings ---> /opt/Xilinx/PetaLinux/2022.1/sstate-cache/arm
+$ petalinux-config ---> Yocto Settings ---> [*] Enable BB NO NETWORK
+```
 
 ### build dependency
 
-- `../hls_repo`
-  + vivado assumes `vitis_hls` generated IP cores are stored on the directory
-  + if you do not need `hls_repo` at all, you can disable this by comment out `IP_REPO_PATH` settings on restore.tcl
-
-### typical development workflow
-
-- clone fresh project
-- prepare build dependency
-- `make restore` to restore vivado project on `project` directory
-- `make ide` to open vivado project for edit
-  + any RTL modules and constraints (xdcs) should be stored in srcs directory since `project` directory will be cleared on `make clean`
-  + if you added any source / constraints file to srcs directory, `make export` to regenerate src\_file.tcl
-  + board design modification can be exported by typing `write_bd_tcl pl_system.tcl -force` on tcl command line
-- `make build` to execute automated "generate bd -> synthesis -> implement -> export xsa" procedure (you can also execute them step-by-step on GUI and tcl console)
-  + bitstream will be stored on `project/pl_system.runs/impl_1/pl_system_wrapper.bit`
-  + xsa file (include bitstream) will be stored in `project/pl_system_wrapper.xsa`
-- `make clean` to remove generated project (make sure all your modification made persistent before clean up)
-- `git add' & 'git commit` to submit changes
-
+- `../pl_system/project/pl_system_wrapper.xsa`
+- `../mb_system/workspace/pl_system_wrapper_with_elf.bit`
+  + PL bitstream embedded with mb\_system compiled elf

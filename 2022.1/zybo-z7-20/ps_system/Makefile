@@ -59,3 +59,4 @@ clean:
 	rm -rf components/plnx_workspace
 	rm -rf components/yocto
 	rm -rf .Xil
+	touch project-spec/hw-description/.gitkeep
