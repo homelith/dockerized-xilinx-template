@@ -20,7 +20,7 @@ build:
 	make -C hls_repo build
 	make -C pl_system build
 	make -C mb_system build
-	make -C ps_system all pl_system
+	make -C ps_system all
 
 # copy output files into build dir
 output:

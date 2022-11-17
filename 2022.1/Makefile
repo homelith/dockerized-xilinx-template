@@ -71,7 +71,6 @@ docker-xrdp:
 		$(shell if [ -n "`lsusb -d 0403:6010`" ] ; then echo "--device `lsusb -d 0403:6010`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -n "`lsusb -d 0403:6011`" ] ; then echo "--device `lsusb -d 0403:6011`" | perl -pe 's!Bus\s(\d{3})\sDevice\s(\d{3}).*!/dev/bus/usb/\1/\2!' ; fi) \
 		$(shell if [ -e /dev/ttyUSB0 ] ; then echo "--device /dev/ttyUSB0"; fi) \
-		$(shell if [ -e /dev/ttyUSB0 ] ; then echo "--device /dev/ttyUSB0"; fi) \
 		$(shell if [ -e /dev/ttyUSB1 ] ; then echo "--device /dev/ttyUSB1"; fi) \
 		$(shell if [ -e /dev/ttyUSB2 ] ; then echo "--device /dev/ttyUSB2"; fi) \
 		$(shell if [ -e /dev/ttyUSB3 ] ; then echo "--device /dev/ttyUSB3"; fi) \
