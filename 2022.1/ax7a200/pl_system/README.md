@@ -29,5 +29,5 @@
   + bitstream will be stored on `project/pl_system.runs/impl_1/pl_system_wrapper.bit`
   + xsa file (include bitstream) will be stored in `project/pl_system_wrapper.xsa`
 - `make clean` to remove generated project (make sure all your modification made persistent before clean up)
-- `git add' & 'git commit` to submit changes
+- `git add` & `git commit` to submit changes
 
