@@ -3,6 +3,7 @@
 #
 # quick usage:
 #   $ make build   # full compilation via PATH introduced Xilinx tools
+#   $ make output  # collect output bitstreams into output/ directory
 #   $ make clean   # cleanup generated files
 ################################################################################
 .PHONY: build output clean
@@ -19,13 +20,13 @@ build:
 	make -C hls_repo build
 	make -C pl_system build
 	make -C mb_system build
-	make -C ps_system all pl_system
+	make -C ps_system all
 
 # copy output files into build dir
 output:
 	if ! [ -d output ]; then mkdir output; fi
-	cp pl_system/pl_system.runs/impl_1/pl_system_wrapper.bit output/
-	cp mb_system/workspace/download.bit output/
+	cp pl_system/project/pl_system.runs/impl_1/pl_system_wrapper.bit output/
+	cp mb_system/workspace/pl_system_wrapper_with_elf.bit output/
 	cp ps_system/images/linux/BOOT.BIN output/
 	cp ps_system/images/linux/image.ub output/
 	cp ps_system/images/linux/boot.scr output/

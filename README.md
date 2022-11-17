@@ -9,7 +9,8 @@
 - Get docker command introduced and accessible from non-privilege user.
 
 - Select Xilinx toolchain version on your purpose and `cd {TOOL_VERSION}`.
-  + 2020.1 : currently provided without Y2K22 patch, you have to trick vitis if it is before Dec 31, 2021 by using faketime libraries.
+  + 2022.1 : available
+  + obsolete/2020.1 : currently provided without Y2K22 patch, you have to trick vitis if it is before Dec 31, 2021 by using faketime libraries.
 
 - Prepare `/opt/install_files` directory and place Xilinx Unified Installer, PetaLinux Installer, and some patches binary downloaded from Xilinx website.
   + file lists are shown on `docker/install.sh`
@@ -23,7 +24,7 @@
 
 ## usage for template project
 
-- note : see indivisual template project (e.g. 2020.1/zybo-z7-20) README.md for indivisual condition of project, explanations below are summary for common functionalities.
+- note : see indivisual template project (e.g. 2020.1/zybo-z7-20) README.md for check condition of project, explanations below are summary for common functionalities.
 
 - Template projects are designed to provide RTL-based module / Vitis HLS based module / Microblaze / (YoctoLinux system if the device has PS) all included on project and let them compiled under CLI environment with just one `$ make` command.
 

@@ -3,6 +3,7 @@
 #
 # quick usage:
 #   $ make build   # full compilation via PATH introduced Xilinx tools
+#   $ make output  # collect output bitstreams into output/ directory
 #   $ make clean   # cleanup generated files
 ################################################################################
 .PHONY: build output clean
@@ -23,8 +24,10 @@ build:
 # copy output files into build dir
 output:
 	if ! [ -d output ]; then mkdir output; fi
-	cp pl_system/pl_system.runs/impl_1/pl_system_wrapper.bit output/
-	cp mb_system/workspace/download.bit output/
+	cp pl_system/project/pl_system.runs/impl_1/pl_system_wrapper.bit output/
+	cp mb_system/workspace/pl_system_wrapper_with_elf.bit output/
+	cp mb_system/workspace/pl_system_wrapper_with_elf.mcs output/
+	cp mb_system/workspace/pl_system_wrapper_with_elf.prm output/
 
 # cleanup cache / log / intermediate files except handoff files (.hdf / .bit / .mmi)
 # to remove all handoffs, use `git clean -fdx` with care
