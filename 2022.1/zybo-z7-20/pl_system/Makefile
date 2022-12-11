@@ -51,6 +51,7 @@ export: $(VIVADO_PROJ_PATH)
 	find $(SRC_FILE_PATH) -name "*.v" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.sv" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.xci" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
+	find $(SRC_FILE_PATH) -name "*.xcix" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.xdc" -exec bash -c "echo \"add_files {} -fileset [get_filesets constrs_1]\" >> src_file.tcl" \;
 	sed -i -e 's/$(subst /,\/,$(SRC_FILE_PATH))/\$${src_path}/g' src_file.tcl
 
