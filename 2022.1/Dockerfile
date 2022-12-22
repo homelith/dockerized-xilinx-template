@@ -13,7 +13,7 @@ RUN dpkg --add-architecture i386
 # useful pkg for development
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      git vim screen tmux rsync sudo unzip usbutils wget x11-apps xorg xterm && \
+      git vim screen telnet tmux rsync sudo unzip usbutils wget x11-apps xorg xterm && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
