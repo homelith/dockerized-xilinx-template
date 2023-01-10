@@ -7,7 +7,7 @@
 #   $ make clean           # clean up generated files
 ################################################################################
 
-.PHONY: default xsct restore build update_hw ide clean
+.PHONY: default xsct restore build program run ide clean
 
 PROJ_ROOT=..
 PROJ_NAME=mb_system
@@ -27,19 +27,29 @@ restore: workspace
 workspace:
 	@if !(type xvfb-run > /dev/null 2>&1); then echo "command 'xvfb-run' not found." ; exit 1 ; fi
 	@if !(type xsct > /dev/null 2>&1); then echo "command 'xsct' not found." ; exit 1 ; fi
+	sudo chmod go+w /dev/stdout
 	xvfb-run $(XBIN_ROOT)/loader -exec rdi_xsct restore.tcl
 
 # build under vitis introduced to PATH
 build: workspace
 	@if !(type xvfb-run > /dev/null 2>&1); then echo "command 'xvfb-run' not found." ; exit 1 ; fi
 	@if !(type xsct > /dev/null 2>&1); then echo "command 'xsct' not found." ; exit 1 ; fi
+	sudo chmod go+w /dev/stdout
 	xvfb-run $(XBIN_ROOT)/loader -exec rdi_xsct build.tcl
 
-# Reload the platform definition.
-update_hw: workspace
+# program FPGA with embedded elf
+program: workspace workspace/pl_system_wrapper_with_elf.bit
 	@if !(type xvfb-run > /dev/null 2>&1); then echo "command 'xvfb-run' not found." ; exit 1 ; fi
 	@if !(type xsct > /dev/null 2>&1); then echo "command 'xsct' not found." ; exit 1 ; fi
-	xvfb-run $(XBIN_ROOT)/loader -exec rdi_xsct update_platform.tcl
+	sudo chmod go+w /dev/stdout
+	xvfb-run $(XBIN_ROOT)/loader -exec rdi_xsct program.tcl
+
+# reset processor, load elf, connect virtual JTAG terminal and release processor
+run: workspace workspace/mb_system/Debug/mb_system.elf
+	@if !(type xvfb-run > /dev/null 2>&1); then echo "command 'xvfb-run' not found." ; exit 1 ; fi
+	@if !(type xsct > /dev/null 2>&1); then echo "command 'xsct' not found." ; exit 1 ; fi
+	sudo chmod go+w /dev/stdout
+	xvfb-run $(XBIN_ROOT)/loader -exec rdi_xsct run.tcl
 
 # open Vitis GUI
 ide: workspace

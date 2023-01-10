@@ -23,7 +23,7 @@ build:
 	sed -i '/cosim_design/d' $(HLS_PROJ_NAME)/$(HLS_PROJ_NAME)/script.tcl
 	vitis_hls $(HLS_PROJ_NAME)/$(HLS_PROJ_NAME)/script.tcl
 
-# open vivado HLS GUI
+# open vitis HLS GUI
 ide:
 	@if !(type vitis_hls > /dev/null 2>&1); then echo "command 'vitis_hls' not found." ; exit 1 ; fi
 	vitis_hls -p $(HLS_PROJ_NAME)

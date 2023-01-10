@@ -19,10 +19,10 @@ XGpio axi_gpio_0;
 
 int main(void)
 {
-	int stat;
-	init_platform();
+    int stat;
+    init_platform();
 
-	// init gpio
+    // init gpio
     stat = XGpio_Initialize(&axi_gpio_0, XPAR_MB_SYSTEM_GPIO_DEVICE_ID);
     if(stat != XST_SUCCESS){
         xil_printf("gpio init failed\n");
@@ -37,7 +37,8 @@ int main(void)
     while (1) {
     	XGpio_DiscreteWrite(&axi_gpio_0, 1, gpio_out);
     	gpio_out = ~gpio_out;
+        xil_printf("gpio status changed\n");
     	usleep(500000);
     }
-	return XST_SUCCESS;
+    return XST_SUCCESS;
 }
