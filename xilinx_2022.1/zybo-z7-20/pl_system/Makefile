@@ -14,8 +14,9 @@
 SCRIPT_DIR       := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 VIVADO_PROJ_NAME := pl_system
 VIVADO_PROJ_PATH := project/$(VIVADO_PROJ_NAME).xpr
-FPGA_PART        := xc7a200tfbg484-2
-IP_REPO_PATH     := $(abspath ../hls_repo)
+BOARD_REPO_PATH  := $(abspath .)
+BOARD_PART       := digilentinc.com:zybo-z7-20:part0:1.1
+IP_REPO_PATHS    := $(abspath ../hls_repo)
 SRC_FILE_TCL     := $(abspath src_file.tcl)
 SRC_FILE_PATH    := $(abspath srcs)
 BD_TCL           := $(abspath pl_system.tcl)
@@ -29,7 +30,8 @@ restore: $(VIVADO_PROJ_PATH)
 
 $(VIVADO_PROJ_PATH):
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
-	vivado -mode batch -source restore.tcl -tclargs $(VIVADO_PROJ_NAME) $(FPGA_PART) $(IP_REPO_PATH) $(SRC_FILE_TCL) $(SRC_FILE_PATH) $(BD_TCL) $(BD_NAME)
+	sed -e 's/{{current_dir}}/$(subst /,\/,$(shell pwd))/g' $(BD_TCL) > $(basename $(BD_TCL))_run.tcl
+	vivado -mode batch -source restore.tcl -tclargs $(VIVADO_PROJ_NAME) $(BOARD_REPO_PATH) $(BOARD_PART) "$(IP_REPO_PATHS)" $(SRC_FILE_TCL) $(SRC_FILE_PATH) $(basename $(BD_TCL))_run.tcl $(BD_NAME)
 
 # build all
 build: $(VIVADO_PROJ_PATH)
@@ -45,18 +47,22 @@ ide: $(VIVADO_PROJ_PATH)
 export: $(VIVADO_PROJ_PATH)
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
 	@if [ -f src_file.tcl.bak ]; then echo "backup file 'src_file.tcl.bak' already exists. stopped."; exit 1; fi
+	@if [ -f $(BD_TCL).bak ]; then echo "backup file '$(BD_TCL).bak' already exists. stopped."; exit 1; fi
 	mv src_file.tcl src_file.tcl.bak
 	echo "set src_path [lindex \$${argv} 0]" > src_file.tcl
-	find $(SRC_FILE_PATH) -name "*.v" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
-	find $(SRC_FILE_PATH) -name "*.sv" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
+	find $(SRC_FILE_PATH) -name "*.v" ! -name "*tb.v" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
+	find $(SRC_FILE_PATH) -name "*.sv" ! -name "*tb.sv" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.xci" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.xcix" -exec bash -c "echo \"add_files {} -fileset [get_filesets sources_1]\" >> src_file.tcl" \;
 	find $(SRC_FILE_PATH) -name "*.xdc" -exec bash -c "echo \"add_files {} -fileset [get_filesets constrs_1]\" >> src_file.tcl" \;
 	sed -i -e 's/$(subst /,\/,$(SRC_FILE_PATH))/\$${src_path}/g' src_file.tcl
+	cp $(BD_TCL) $(BD_TCL).bak
+	sed -i -e 's/$(subst /,\/,$(shell pwd))/{{current_dir}}/g' $(BD_TCL)
 
 # cleanup generated files
 clean:
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
+	rm -f $(basename $(BD_TCL))_run.tcl
 	rm -f vivado*.log vivado*.jou vivado*.str 
 	rm -rf project
 	rm -rf .Xil NA
