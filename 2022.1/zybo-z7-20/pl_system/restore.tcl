@@ -1,11 +1,11 @@
 if { [llength $argv] < 8 } {
-    error "Usage: vivado -mode tcl restore_project.tcl --tclargs <ProjectName> <BoardRepoPath> <BoardPart> <IPRepoPath> <SrcFileTcl> <SrcFilePath> <BDTcl> <BDName>"
+    error "Usage: vivado -mode tcl restore_project.tcl --tclargs <ProjectName> <BoardRepoPath> <BoardPart> \"<IPRepoPaths>\" <SrcFileTcl> <SrcFilePath> <BDTcl> <BDName>"
 }
 
 set project_name     [lindex $argv 0]
 set board_repo_path  [lindex $argv 1]
 set board_part       [lindex $argv 2]
-set ip_repo_path     [lindex $argv 3]
+set ip_repo_paths    [lindex $argv 3]
 set src_file_tcl     [lindex $argv 4]
 set src_file_path    [lindex $argv 5]
 set bd_tcl           [lindex $argv 6]
@@ -18,8 +18,9 @@ set_param board.repoPaths [concat [file normalize ${board_repo_path}] [get_param
 set_property BOARD_PART_REPO_PATHS [get_param board.repoPaths] [current_project]
 set_property board_part ${board_part} [current_project]
 
-# add ip repositories
-set_property IP_REPO_PATHS [file normalize ${ip_repo_path}] [current_project]
+# add ip and hls repositories
+set ip_repo_path_list [split ${ip_repo_paths} " "]
+set_property IP_REPO_PATHS [file normalize ${ip_repo_path_list}] [get_filesets sources_1]
 update_ip_catalog
 
 # add source files

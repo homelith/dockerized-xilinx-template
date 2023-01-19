@@ -15,8 +15,6 @@ all: build output
 
 # `hls_repo -> pl_system -> microblaze SDK -> petalinux SDK` overall compilation using local installed Xilinx toolkit
 build:
-	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found. try 'make docker' to get tool suite." ; exit 1 ; fi
-	@if !(type vitis_hls > /dev/null 2>&1); then echo "command 'vitis_hls' not found. try 'make docker' to get tool suite." ; exit 1 ; fi
 	make -C hls_repo build
 	make -C pl_system build
 	make -C mb_system build
@@ -34,8 +32,6 @@ output:
 # cleanup cache / log / intermediate files except handoff files (.hdf / .bit / .mmi)
 # to remove all handoffs, use `git clean -fdx` with care
 clean:
-	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found. try 'make docker' to get tool suite." ; exit 1 ; fi
-	@if !(type vitis_hls > /dev/null 2>&1); then echo "command 'vitis_hls' not found. try 'make docker' to get tool suite." ; exit 1 ; fi
 	rm -rf output
 	make -C ps_system clean
 	make -C mb_system clean
