@@ -1,0 +1,1 @@
+exec program_flash -f workspace/BOOT.bin -offset 0 -flash_type qspi-x4-single -fsbl workspace/pl_system_wrapper/export/pl_system_wrapper/sw/pl_system_wrapper/boot/fsbl.elf -cable type xilinx_tcf url TCP:127.0.0.1:3121 > /dev/stdout

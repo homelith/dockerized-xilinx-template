@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]{{current_dir}}/workspace/pl_system_wrapper/export/pl_system_wrapper/sw/pl_system_wrapper/boot/fsbl.elf
+	{{current_dir}}/../mb_system/workspace/pl_system_wrapper_with_elf.bit
+	{{current_dir}}/workspace/qspi_boot/Debug/qspi_boot.elf
+}
