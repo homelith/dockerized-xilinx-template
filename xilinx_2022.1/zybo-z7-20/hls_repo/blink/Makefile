@@ -16,14 +16,14 @@ SCRIPT_DIR=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 default: build
 
 # build under vitis_hls introduced to PATH
-#   csim -> HDL synthesis -> C-HDL co-sim -> Export IP
+# flow : HDL synthesis -> Export IP
 build:
 	@if !(type vitis_hls > /dev/null 2>&1); then echo "command 'vitis_hls' not found." ; exit 1 ; fi
 	sed -i '/csim_design/d' $(HLS_PROJ_NAME)/$(HLS_PROJ_NAME)/script.tcl
 	sed -i '/cosim_design/d' $(HLS_PROJ_NAME)/$(HLS_PROJ_NAME)/script.tcl
 	vitis_hls $(HLS_PROJ_NAME)/$(HLS_PROJ_NAME)/script.tcl
 
-# open vitis HLS GUI
+# open vivado HLS GUI
 ide:
 	@if !(type vitis_hls > /dev/null 2>&1); then echo "command 'vitis_hls' not found." ; exit 1 ; fi
 	vitis_hls -p $(HLS_PROJ_NAME)

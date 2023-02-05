@@ -17,6 +17,7 @@
 - pre-applied config
 
 ```
+$ petalinux-create --type project --template zynq --name ps_system
 $ petalinux-config ---> Yocto Settings ---> Add pre-mirror url ---> file:///opt/Xilinx/PetaLinux/2022.1/downloads
 $ petalinux-config ---> Yocto Settings ---> Local sstate feeds settings ---> /opt/Xilinx/PetaLinux/2022.1/sstate-cache/arm
 $ petalinux-config ---> Yocto Settings ---> [*] Enable BB NO NETWORK

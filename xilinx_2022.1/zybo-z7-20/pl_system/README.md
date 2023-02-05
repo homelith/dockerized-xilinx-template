@@ -1,6 +1,6 @@
-## pl\_system vivado project
+# pl\_system vivado project
 
-### files
+## files
 
 - README.md : this file
 - Makefile : stores useful shortcut commands
@@ -10,13 +10,13 @@
 - implement.tcl : "generate bd -> synthesis -> implement -> export xsa" automation script
 - srcs : stores RTL modules (.v, .sv), generated IP core definitions (.xci),  and constraints (.xdc)
 
-### build dependency
+## build dependency
 
 - `../hls_repo`
   + vivado assumes `vitis_hls` generated IP cores are stored on the directory
   + if you do not need `hls_repo` at all, you can disable this by comment out `IP_REPO_PATH` settings on restore.tcl
 
-### typical development workflow
+## typical development workflow
 
 - clone fresh project
 - prepare build dependency
@@ -29,5 +29,5 @@
   + bitstream will be stored on `project/pl_system.runs/impl_1/pl_system_wrapper.bit`
   + xsa file (include bitstream) will be stored in `project/pl_system_wrapper.xsa`
 - `make clean` to remove generated project (make sure all your modification made persistent before clean up)
-- `git add' & 'git commit` to submit changes
+- `git add` & `git commit` to submit changes
 

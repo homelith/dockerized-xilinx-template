@@ -4,47 +4,56 @@
 # quick usage:
 #   $ make restore      # restore project from $(SRC_FILE_TCL) and $(BD_TCL)
 #   $ make build        # full compilation via local installed Xilinx tools
-#   $ make ide          # open vivado GUI with $(VIVADO_PROJ_NAME)
+#   $ make program      # one-time configuration to FPGA CRAM
+#   $ make ide          # open vivado GUI with $(PROJ_NAME)
 #   $ make export       # regenerate src_file.tcl according to source files in `srcs` directory
 #   $ make clean        # export IPs & clean up generated files
 ################################################################################
 
-.PHONY: default restore build ide export clean
+.PHONY: default restore build program ide export clean
 
-SCRIPT_DIR       := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-VIVADO_PROJ_NAME := pl_system
-VIVADO_PROJ_PATH := project/$(VIVADO_PROJ_NAME).xpr
-FPGA_PART        := xc7a200tfbg484-2
-IP_REPO_PATHS    := $(abspath ../hls_repo)
-SRC_FILE_TCL     := $(abspath src_file.tcl)
-SRC_FILE_PATH    := $(abspath srcs)
-BD_TCL           := $(abspath pl_system.tcl)
-BD_NAME          := pl_system
+SCRIPT_DIR         := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+PROJ_NAME          := pl_system
+PROJ_PATH          := project/$(PROJ_NAME).xpr
+BOARD_REPO_PATH    := $(abspath .)
+IP_REPO_PATHS      := $(abspath ../hls_repo)
+BOARD_PART_MODE    := false # BoardPart : true, FPGAPart : false
+BOARD_OR_FPGA_PART := xc7a200tfbg484-2
+SRC_FILE_TCL       := $(abspath src_file.tcl)
+SRC_FILE_PATH      := $(abspath srcs)
+TOP_MODULE_NAME    := pl_system_wrapper
+BD_TCL             := $(abspath pl_system.tcl)
+BD_NAME            := pl_system
+NUM_JOBS_PARALLEL  := 4
 
 # default entry
 default: build
 
 # restore Vivado project
-restore: $(VIVADO_PROJ_PATH)
+restore: $(PROJ_PATH)
 
-$(VIVADO_PROJ_PATH):
+$(PROJ_PATH):
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
 	sed -e 's/{{current_dir}}/$(subst /,\/,$(shell pwd))/g' $(BD_TCL) > $(basename $(BD_TCL))_run.tcl
-	vivado -mode batch -source restore.tcl -tclargs $(VIVADO_PROJ_NAME) $(FPGA_PART) "$(IP_REPO_PATHS)" $(SRC_FILE_TCL) $(SRC_FILE_PATH) $(basename $(BD_TCL))_run.tcl $(BD_NAME)
+	vivado -mode batch -source restore.tcl -tclargs $(PROJ_NAME) $(BOARD_REPO_PATH) "$(IP_REPO_PATHS)" $(BOARD_PART_MODE) $(BOARD_OR_FPGA_PART) $(SRC_FILE_TCL) $(SRC_FILE_PATH) $(basename $(BD_TCL))_run.tcl $(BD_NAME)
 
 # build all
-build: $(VIVADO_PROJ_PATH)
+build: $(PROJ_PATH)
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
-	vivado -mode batch -source implement.tcl -tclargs $(VIVADO_PROJ_NAME) $(BD_NAME)
+	vivado -mode batch -source implement.tcl -tclargs $(PROJ_NAME) $(TOP_MODULE_NAME) $(NUM_JOBS_PARALLEL)
+
+# write to FPGA CRAM
+program:
+	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
+	vivado -mode batch -source program.tcl -tclargs $(PROJ_NAME) $(TOP_MODULE_NAME)
 
 # open vivado GUI
-ide: $(VIVADO_PROJ_PATH)
+ide: $(PROJ_PATH)
 	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
-	vivado $(VIVADO_PROJ_PATH) &
+	vivado $(PROJ_PATH) &
 
 # record all .v, .sv, xci, .xdc in srcs folder into src_file.tcl
-export: $(VIVADO_PROJ_PATH)
-	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
+export: $(PROJ_PATH)
 	@if [ -f src_file.tcl.bak ]; then echo "backup file 'src_file.tcl.bak' already exists. stopped."; exit 1; fi
 	@if [ -f $(BD_TCL).bak ]; then echo "backup file '$(BD_TCL).bak' already exists. stopped."; exit 1; fi
 	mv src_file.tcl src_file.tcl.bak
@@ -60,7 +69,6 @@ export: $(VIVADO_PROJ_PATH)
 
 # cleanup generated files
 clean:
-	@if !(type vivado > /dev/null 2>&1); then echo "command 'vivado' not found." ; exit 1 ; fi
 	rm -f $(basename $(BD_TCL))_run.tcl
 	rm -f vivado*.log vivado*.jou vivado*.str 
 	rm -rf project

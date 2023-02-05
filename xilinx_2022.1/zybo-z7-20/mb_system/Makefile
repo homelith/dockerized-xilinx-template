@@ -2,22 +2,24 @@
 # Makefile for vitis embedded sdk project
 #
 # quick usage:
-#   $ make build           # full compilation via local installed Xilinx tools
-#   $ make ide             # open vitis GUI
-#   $ make clean           # clean up generated files
+#   $ make xsct    # get xsct console
+#   $ make restore # restore project files accoding to current directory path
+#   $ make build   # restore -> full compilation via local installed Xilinx tools
+#   $ make program # one-time FPGA configuration from {project_with_elf}.bit
+#   $ make run     # load elf via writer cable and connect to virtual JTAG console
+#   $ make ide     # open vitis GUI
+#   $ make clean   # clean up generated files
 ################################################################################
 
 .PHONY: default xsct restore build program run ide clean
 
-PROJ_ROOT=..
-PROJ_NAME=mb_system
 SCRIPT_DIR=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 XSCT_PATH=$(shell readlink -f $(shell which xsct))
 XBIN_ROOT=$(shell dirname $(XSCT_PATH))
 
 default: build
 
-# Launch xsct
+# launch xsct
 xsct:
 	xvfb-run $(XBIN_ROOT)/loader -exec rdi_xsct
 
