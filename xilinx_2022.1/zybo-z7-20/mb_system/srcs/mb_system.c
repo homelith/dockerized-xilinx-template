@@ -35,10 +35,10 @@ int main(void)
     // blink gpio
     u32 gpio_out = 0x00000000U;
     while (1) {
-    	XGpio_DiscreteWrite(&axi_gpio_0, 1, gpio_out);
-    	gpio_out = ~gpio_out;
-        xil_printf("gpio status changed\n");
-    	usleep(500000);
+        XGpio_DiscreteWrite(&axi_gpio_0, 1, gpio_out);
+        gpio_out = ~gpio_out;
+        xil_printf("gpio status changed\r\n");
+        usleep(500000);
     }
     return XST_SUCCESS;
 }
